@@ -1,0 +1,23 @@
+# User Profile Cleanup Script
+# Deletes temp files and clears browser cache for all users
+
+Write-Host "Starting user profile cleanup..." -ForegroundColor Cyan
+
+$profiles = Get-ChildItem 'C:\Users' | Where-Object { $_.PSIsContainer -and $_.Name -notmatch 'Public|Default' }
+
+foreach ($profile in $profiles) {
+    $tempPath = "$($profile.FullName)\AppData\Local\Temp"
+    $chromeCache = "$($profile.FullName)\AppData\Local\Google\Chrome\User Data\Default\Cache"
+
+    if (Test-Path $tempPath) {
+        Remove-Item "$tempPath\*" -Recurse -Force -ErrorAction SilentlyContinue
+        Write-Host "Cleared temp for $($profile.Name)"
+    }
+
+    if (Test-Path $chromeCache) {
+        Remove-Item "$chromeCache\*" -Recurse -Force -ErrorAction SilentlyContinue
+        Write-Host "Cleared Chrome cache for $($profile.Name)"
+    }
+}
+
+Write-Host "Cleanup complete." -ForegroundColor Green
