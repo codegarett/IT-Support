@@ -1,0 +1,6 @@
+# Basic network diagnostic script
+
+Write-Host "IP Configuration:"
+ipconfig
+Write-Host "Pinging Google DNS..."
+ping 8.8.8.8
