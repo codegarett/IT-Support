@@ -1,0 +1,6 @@
+# Removes temp files and clears recycle bin
+
+Write-Host "Cleaning up temp files..."
+Remove-Item -Path "$env:TEMP\*" -Recurse -Force -ErrorAction SilentlyContinue
+Clear-RecycleBin -Force
+Write-Host "Cleanup complete!"
