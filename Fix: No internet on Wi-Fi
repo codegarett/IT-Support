@@ -1,0 +1,50 @@
+# 🛠️ Fix: No Internet on Wi-Fi
+
+Having trouble connecting to the internet while connected to Wi-Fi? Here are common steps to diagnose and fix the issue:
+
+---
+
+##  Steps to Resolve
+
+1. **Release and Renew IP Address**
+   - Open Command Prompt as Administrator
+   - Run the following commands:
+     ```bash
+     ipconfig /release
+     ipconfig /renew
+     ```
+
+2. **Restart Wi-Fi Adapter**
+   - Open Device Manager
+   - Locate your network adapter under **Network adapters**
+   - Right-click > **Disable**, then right-click again > **Enable**
+
+3. **Check for Driver Updates**
+   - In Device Manager, right-click your Wi-Fi adapter
+   - Click **Update driver** > **Search automatically**
+
+4. **Reboot Your Modem and Router**
+   - Unplug both devices for 30 seconds
+   - Plug them back in and wait 2–3 minutes for full reboot
+
+5. **Check for Local Outages**
+   - Visit your ISP’s website or use a mobile device to check for outages
+   - Call support if necessary, especially after storms or during service upgrades
+
+---
+
+## Tools Used
+
+- `ipconfig` (Command Line)
+- **Device Manager**
+- **Router/Modem Interface**
+- **ISP Dashboard or Outage Map**
+
+---
+
+## Pro Tip
+
+If this is a recurring issue, consider:
+- Updating your router firmware
+- Resetting TCP/IP stack: `netsh int ip reset`
+- Contacting your ISP to check for outages
