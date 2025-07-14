@@ -1,0 +1,9 @@
+# Printer Offline Troubleshooting
+
+**Steps:**
+1. Make sure the printer is powered on
+2. Check USB/Wi-Fi connection
+3. Restart the printer spooler service
+4. Reinstall the printer driver if necessary
+
+**Tools Used:** Devices and Printers, Services.msc
