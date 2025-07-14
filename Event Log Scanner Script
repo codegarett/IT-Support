@@ -1,0 +1,15 @@
+# Event Log Scanner Script
+# Displays recent system and application errors from the Event Log
+
+Write-Host "Scanning Windows Event Logs..." -ForegroundColor Cyan
+
+$systemErrors = Get-EventLog -LogName System -EntryType Error -Newest 10
+$appErrors = Get-EventLog -LogName Application -EntryType Error -Newest 10
+
+Write-Host "`n--- System Errors ---`n" -ForegroundColor Red
+$systemErrors | Format-Table -Property TimeGenerated, Source, EventID, Message -AutoSize
+
+Write-Host "`n--- Application Errors ---`n" -ForegroundColor Red
+$appErrors | Format-Table -Property TimeGenerated, Source, EventID, Message -AutoSize
+
+Write-Host "`nLog scan complete." -ForegroundColor Green
