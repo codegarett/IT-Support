@@ -1,0 +1,17 @@
+# App Uninstaller Script
+# Prompts user to select an app to uninstall using Winget
+
+Write-Host "Fetching installed apps..." -ForegroundColor Cyan
+
+$apps = winget list | Out-String
+$apps | Out-File "$env:TEMP\InstalledApps.txt"
+notepad "$env:TEMP\InstalledApps.txt"
+
+$appName = Read-Host "Enter the name (or part of the name) of the app you want to uninstall"
+
+if ($appName) {
+    winget uninstall --name "$appName"
+    Write-Host "Attempted to uninstall $appName" -ForegroundColor Green
+} else {
+    Write-Host "No app name entered. Exiting..." -ForegroundColor Yellow
+}
