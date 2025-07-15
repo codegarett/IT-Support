@@ -35,3 +35,4 @@ Add-Content $logPath "`n[IP Address]"
     ForEach-Object { Add-Content $logPath "IP Address: $_" }
 
 Write-Host "System info saved to $logPath" -ForegroundColor Green
+
