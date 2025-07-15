@@ -1,6 +1,17 @@
-# Removes temp files and clears recycle bin
+# cleanup-temp.ps1
+# Deletes temp files and clears the Recycle Bin
 
-Write-Host "Cleaning up temp files..."
+Write-Host "Cleaning up temp files..." -ForegroundColor Cyan
+
+# Remove current user's temp files
 Remove-Item -Path "$env:TEMP\*" -Recurse -Force -ErrorAction SilentlyContinue
-Clear-RecycleBin -Force
-Write-Host "Cleanup complete!"
+
+# Attempt to clear Recycle Bin with error handling
+try {
+    Clear-RecycleBin -Force -ErrorAction Stop
+    Write-Host "Recycle Bin cleared." -ForegroundColor Green
+} catch {
+    Write-Host "Recycle Bin could not be cleared (possibly not present in VM)." -ForegroundColor Yellow
+}
+
+Write-Host "Cleanup complete!" -ForegroundColor Green
