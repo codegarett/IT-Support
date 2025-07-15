@@ -1,5 +1,27 @@
-# Installs apps using winget
+# Installs apps using winget\
 
-winget install -e --id Google.Chrome
-winget install -e --id Notepad++.Notepad++
-winget install -e --id 7zip.7zip
+Write-Host "Starting common application installs..." -ForegroundColor Cyan
+
+# Check if winget is available
+if (Get-Command winget -ErrorAction SilentlyContinue) {
+    # List of common apps to install
+    $apps = @(
+        "Google.Chrome",
+        "Mozilla.Firefox",
+        "Notepad++.Notepad++",
+        "7zip.7zip",
+        "VideoLAN.VLC",
+        "Microsoft.VisualStudioCode",
+        "Git.Git",
+        "WiresharkFoundation.Wireshark"
+    )
+
+    foreach ($app in $apps) {
+        Write-Host "`nInstalling: $app" -ForegroundColor Yellow
+        winget install --id $app --silent --accept-source-agreements --accept-package-agreements
+    }
+
+    Write-Host "`n✅ All selected apps attempted for installation." -ForegroundColor Green
+} else {
+    Write-Host "`n⚠️ Winget is not available on this system." -ForegroundColor Red
+    Write-Host "Install 'App Installer' from the Microsoft Store to enable winget." -ForegroundColor Yellow
