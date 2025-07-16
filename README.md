@@ -44,7 +44,7 @@ Step-by-step troubleshooting guides for common support issues:
 ### System Info Script Output
 <img width="1154" height="528" alt="Get-system info script Screenshot" src="https://github.com/user-attachments/assets/c2fa1f42-bed7-443b-ae41-74187f59f590" />
 <img width="478" height="658" alt="User profile Script Results in Notepad Screenshot" src="https://github.com/user-attachments/assets/727d4c25-f667-4dd9-a908-fcb53bd0b87d" />
-### Network Diagnostics
+ Network Diagnostics
 <img width="553" height="557" alt="Network Diagnostic Script Screenshot" src="https://github.com/user-attachments/assets/dc81e257-0a2e-4341-b342-590c527d0fa8" />
 
 ### Cleanup Temporary Files
