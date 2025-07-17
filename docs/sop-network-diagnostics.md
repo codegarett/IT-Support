@@ -1,4 +1,6 @@
 [sop-network-diagnostics.md](https://github.com/user-attachments/files/21299970/sop-network-diagnostics.md)
+
+
 Network Diagnostics for Internet or DNS Issues
 This Standard Operating Procedure (SOP) serves as a structured troubleshooting workflow for remote support technicians responding to internet connectivity problems, particularly in environments like restaurants that rely heavily on Point-of-Sale (POS) systems and cloud-based services.
 
