@@ -6,15 +6,18 @@ A collection of PowerShell scripts and support documentation designed to assist 
 
 ## 🔧 Scripts
 
-| Script Name                 | Description                                                                 |
-|----------------------------|-----------------------------------------------------------------------------|
-| `cleanup-temp.ps1`         | Clears user temp files and attempts to empty the Recycle Bin.              |
-| `install-common-apps.ps1`  | Installs commonly used apps using `winget` (e.g., Chrome, VS Code, Git).   |
-| `network-diagnostics.ps1`  | Runs IP configuration check and pings external DNS to verify connectivity. |
-| `get-system-info.ps1`      | Generates a detailed system info report and opens it in Notepad.           |
-| `user-profile-cleanup.ps1` | Cleans temp folders and Chrome cache across all user profiles.             |
-| `app-uninstaller.ps1`      | Prompts user for an app name and attempts uninstall via `winget`.          |
-| `event-log-scanner.ps1`    | Displays the 10 most recent system and application error logs. 
+| Script Name                | Description                                                                 |
+| -------------------------- | --------------------------------------------------------------------------- |
+| `cleanup-temp.ps1`         | Clears user temp files and attempts to empty the Recycle Bin.               |
+| `install-common-apps.ps1`  | Installs commonly used apps using `winget` (e.g., Chrome, VS Code, Git).    |
+| `network-diagnostics.ps1`  | Runs IP configuration check and pings external DNS to verify connectivity.  |
+| `get-system-info.ps1`      | Generates a detailed system info report and opens it in Notepad.            |
+| `user-profile-cleanup.ps1` | Cleans temp folders and Chrome cache across all user profiles.              |
+| `app-uninstaller.ps1`      | Prompts user for an app name and attempts uninstall via `winget`.           |
+| `event-log-scanner.ps1`    | Displays the 10 most recent system and application error logs.              |
+| `ad-user-report.ps1`       | Queries Active Directory and outputs a report of users with key attributes. |
+| `new-secure-password.ps1`  | Generates a strong random password using PowerShell's cryptographic tools.  |
+
 
 ---
 
