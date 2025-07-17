@@ -62,6 +62,11 @@ Step-by-step troubleshooting guides for common support issues:
 ### Event Log Scanner Script
 <img width="851" height="842" alt="Event Log Scanner Script Screenshot" src="https://github.com/user-attachments/assets/5abd893a-038c-4f34-ac22-9aaec77f4270" />
 
+## 📚 Documentation
+
+- [Remote POS Troubleshooting SOP](docs/sop-pos-troubleshooting.md)  
+  Step-by-step instructions for diagnosing and fixing POS performance issues using the PowerShell Toolkit.
+
 ---
 
 ## 👨‍💻 Author
