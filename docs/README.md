@@ -1,6 +1,6 @@
 # 🗂 IT Support Toolkit Documentation
 
-This folder contains support documentation and Standard Operating Procedures (SOPs) designed to accompany the PowerShell scripts in the [IT Support Toolkit](../). These SOPs help IT technicians, especially those in restaurant and retail environments, perform common troubleshooting and support workflows with clarity and consistency.
+This folder contains support documentation and Standard Operating Procedures (SOPs) designed to accompany the PowerShell scripts in the IT Support Toolkit. These SOPs help IT technicians, especially those in restaurant and retail environments, perform common troubleshooting and support workflows with clarity and consistency.
 
 Each SOP reflects real-world scenarios and outlines practical steps using the toolkit's scripts for fast and effective remote support.
 
@@ -22,13 +22,17 @@ Each SOP reflects real-world scenarios and outlines practical steps using the to
 
 ---
 
-## 📌 How to Use These SOPs
-
-1. Use these guides as reference during live remote support sessions.
-2. Run the corresponding PowerShell scripts from the [main repository](../).
-3. Document resolutions and update internal tickets accordingly.
-
+### 🪵 [Event Log Triage SOP](sop-event-log-triage.md)
+**Scenario:** A system is crashing unexpectedly or behaving erratically.  
+**Purpose:** Help technicians quickly analyze recent Application and System errors to identify root causes.  
+**Covers:** Use of `event-log-scanner.ps1` script to extract logs, identify common Event IDs (e.g., 1000, 41), and document findings for escalation or resolution.
 
 ---
+
+## 📌 How to Use These SOPs
+
+- Use these guides as reference during live remote support sessions.  
+- Run the corresponding PowerShell scripts from the [main repository](../).  
+- Document resolutions and update internal tickets accordingly.
 
 For any questions or to contribute new SOPs, please open a pull request or issue in the main repo.
