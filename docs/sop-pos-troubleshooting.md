@@ -40,8 +40,11 @@ Staff frustration
 
 This SOP ensures techs can confidently support frontline operations by performing:
 
+
 Proactive maintenance (temp cleanup, log scanning)
+
 Root-cause diagnostics (error logs, system info)
+
 Tactical resolutions (safe reboots, profile resets)
 
 It can be applied consistently across multiple locations and helps standardize how restaurant IT support is delivered.
