@@ -27,7 +27,7 @@ Each SOP reflects real-world scenarios and outlines practical steps using the to
 1. Use these guides as reference during live remote support sessions.
 2. Run the corresponding PowerShell scripts from the [main repository](../).
 3. Document resolutions and update internal tickets accordingly.
-4. Expand this folder as your toolkit grows — add imaging guides, onboarding workflows, and more.
+
 
 ---
 
