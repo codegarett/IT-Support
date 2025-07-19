@@ -1,33 +1,126 @@
-[sop-network-diagnostics.md](https://github.com/user-attachments/files/21299970/sop-network-diagnostics.md)
+# 🌐 Network Diagnostics SOP (Internet or DNS Issues)
 
+This Standard Operating Procedure (SOP) outlines a consistent, step-by-step process for remotely diagnosing and resolving **network connectivity issues**, particularly in environments reliant on Point-of-Sale (POS) systems and cloud-based services.
 
-Network Diagnostics for Internet or DNS Issues
-This Standard Operating Procedure (SOP) serves as a structured troubleshooting workflow for remote support technicians responding to internet connectivity problems, particularly in environments like restaurants that rely heavily on Point-of-Sale (POS) systems and cloud-based services.
+---
 
-The SOP is designed to work alongside your PowerShell-based IT Support Toolkit and offers a systematic approach to identify and remediate the most common networking failures, including:
+## 🎯 Scope
 
-Local IP configuration problems
+This SOP is applicable for:
 
-Faulty DNS resolution
+- Restaurant or retail POS terminals with internet or cloud service issues
+- Devices reporting **slow or no connection**, **DNS failures**, or **gateway timeouts**
+- Remote troubleshooting via Splashtop, AnyDesk, or ConnectWise
 
-Unresponsive gateways or dropped connections
+It combines **automated PowerShell diagnostics** with manual recovery techniques to speed up resolution and standardize remote IT support.
 
-Incorrect adapter status or media disconnections
+---
 
-It combines both automated and manual troubleshooting techniques:
+## 🛠️ Required Tools
 
-Executes your network-diagnostics.ps1 script to quickly gather network health data
+- Remote access session (Splashtop, AnyDesk, etc.)
+- PowerShell terminal access
+- Toolkit Scripts:
+  - `network-diagnostics.ps1`
 
-Provides fallback commands for flushing DNS, resetting IP stacks, and rebooting adapters
+---
 
-Encourages documentation of findings for service ticket traceability
+## 🚦 Troubleshooting Workflow
 
-This guide is especially useful for:
+### 1. 🚀 Run Diagnostic Script
 
-Remote troubleshooting of restaurant registers or kiosks
+Run: `network-diagnostics.ps1`
 
-Responding to support calls for slow or inaccessible web-based systems
+Purpose:
+- Gather IP, DNS, and gateway details
+- Ping gateway, DNS, and external sites
+- Detect media disconnection or DHCP lease issues
 
-Diagnosing ISP-level vs local configuration issues
+📝 Log output in support ticket or save as `.txt` locally for upload.
 
-With clear PowerShell examples, reboot-safe steps, and practical resolution logging tips, this SOP helps ensure every technician on your team follows a consistent, reliable process.
+---
+
+### 2. 🔍 Review Key Output
+
+Check for:
+- Missing or self-assigned IP (`169.x.x.x`)
+- Unreachable default gateway
+- DNS lookup failures
+- Packet loss or high latency to external hosts (e.g., `8.8.8.8`, `google.com`)
+
+---
+
+### 3. 🔄 Apply Manual Fixes
+
+Use these PowerShell commands as fallback remediation:
+
+#### a. Flush DNS Cache
+```powershell
+ipconfig /flushdns
+b. Release & Renew IP Address (DHCP)
+powershell
+Copy
+Edit
+ipconfig /release
+ipconfig /renew
+c. Reset Winsock & TCP/IP Stack
+powershell
+Copy
+Edit
+netsh winsock reset
+netsh int ip reset
+📌 Note: This may require a reboot to take full effect.
+
+4. 🔌 Reboot Network Adapter (if needed)
+Use these commands to disable/enable the adapter without full system restart:
+
+powershell
+Copy
+Edit
+Get-NetAdapter | Where-Object {$_.Status -eq "Up"} | Disable-NetAdapter -Confirm:$false
+Start-Sleep -Seconds 5
+Get-NetAdapter | Where-Object {$_.Status -eq "Disabled"} | Enable-NetAdapter
+Ensure you’re still connected remotely before running this!
+
+5. 📡 Re-Test Connectivity
+Use built-in tools or script again:
+
+powershell
+Copy
+Edit
+Test-Connection 8.8.8.8 -Count 4
+Resolve-DnsName google.com
+Confirm:
+
+Internet access is restored
+
+POS system or browser loads normally
+
+Cloud services (ordering, inventory, etc.) are responsive
+
+🧾 Documentation Tips
+Before closing the ticket:
+
+Record script output (key errors or failures)
+
+Note any commands used manually
+
+Confirm resolution with on-site staff
+
+Capture IP/DNS settings and whether a reboot occurred
+
+📌 Common Root Causes
+Symptom	Possible Cause
+No IP / 169.x.x.x	DHCP failure
+Can ping IPs, not domains	DNS resolution issue
+No gateway response	Misconfigured gateway or switch
+Intermittent web access	ISP latency or packet loss
+
+✅ Best Practices
+Run this SOP during initial troubleshooting, not after escalation
+
+Keep network-diagnostics.ps1 updated with new checks
+
+Snapshot common failures across sites for root-cause trending
+
+Reboot POS only if necessary and with on-site approval
