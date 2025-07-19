@@ -1,40 +1,114 @@
-[sop-event-log-triage.md](https://github.com/user-attachments/files/21300987/sop-event-log-triage.md)
+# 📋 Event Log Scanner SOP – Rapid Error & Issue Identification
 
+This Standard Operating Procedure (SOP) outlines how to use the `event-log-scanner.ps1` script to quickly identify recent **errors and warnings** from the Windows Event Logs. This process supports IT technicians during **remote troubleshooting sessions**, particularly when investigating:
 
+- System crashes or freezes  
+- Unresponsive applications  
+- Blue Screens of Death (BSODs)  
+- General system degradation with unclear cause
 
-📋 SOP: Event Log Scanner – Rapid Error & Issue Identification
-This Standard Operating Procedure (SOP) outlines how to effectively use the event-log-scanner.ps1 script to identify recent system errors and warnings by analyzing the Windows Event Viewer logs. It is designed to support IT technicians in quickly gathering actionable insights during remote support sessions, especially when dealing with unresponsive applications, system crashes, or unexplained performance degradation.
+---
 
-The script streamlines the process of sifting through dense event logs by automatically pulling the most relevant entries—such as recent application, system, and security errors—based on predefined filters like severity level and time window. The output is formatted for easy reading and can be used to document incidents, support escalation procedures, and inform root cause analysis.
+## 🔍 Key Use Cases
 
-🔍 Key Use Cases
-Diagnosing application or system crashes
+Use this SOP to:
 
-Investigating freezing or BSOD events
+- Diagnose unexplained slowdowns, crashes, or user complaints
+- Validate and document user-reported issues
+- Prepare incident reports or notes for Tier 2/3 escalation
+- Maintain transparency in service tickets and technical audits
 
-Validating user-reported issues with supporting log evidence
+---
 
-Preparing detailed notes for escalation to Tier 2 or 3 support
+## 🛠️ Required Tools
 
-Providing transparency in support tickets and documentation
+- Remote access (Splashtop, AnyDesk, ConnectWise)
+- PowerShell terminal access
+- Toolkit Script:
+  - `event-log-scanner.ps1`
 
-🛠️ What the Script Does
-Retrieves logs from Application and System channels
+---
 
-Filters by Error and Warning levels from the last 24 hours (configurable)
+## 🚦 Script Capabilities
 
-Outputs concise summaries with timestamps, sources, and event IDs
+`event-log-scanner.ps1` performs the following:
 
-Saves or displays results in a readable format (e.g., Notepad or .txt file)
+- Retrieves **Application** and **System** event logs
+- Filters for entries marked **Error** or **Warning**
+- Limits search to the **last 24 hours** *(can be customized in script)*
+- Outputs:
+  - Timestamp
+  - Source (e.g., "Application Error", "Service Control Manager")
+  - Event ID
+  - Brief message/description
+- Displays results in Notepad or optionally saves to `.txt`
+
+---
+
+## 🔄 Troubleshooting Workflow
+
+### 1. 🚀 Run the Script
+
+From an elevated PowerShell prompt on the target system:
+```powershell
+.\event-log-scanner.ps1
+🔐 Ensure you're running with admin rights for full access to logs.
+
+2. 🔎 Review Output
+Look for high-impact entries such as:
+
+Log Type	Common Errors	Example Sources
+System	Unexpected shutdown, driver failure	Service Control Manager, BugCheck
+Application	App crashes or .NET issues	Application Error, .NET Runtime
+
+Focus on:
+
+Repeating event IDs
+
+Errors occurring at the same time as user complaints
+
+System instability markers (e.g., Event ID 41, 1000, 6008)
+
+3. 📂 Save Output for Documentation
+The script automatically opens results in Notepad. You can:
+
+Save the file to Desktop as event-log-summary.txt
+
+Upload to support ticket or attach to escalation notes
+
+Copy/paste key entries into ticket comments
+
+4. ⬆️ Escalation (If Needed)
+If errors are unfamiliar, hardware-related, or persistent:
+
+Include event-log-summary.txt in the escalation package
+
+Highlight:
+
+Repeating Event IDs
+
+Time of first occurrence
+
+Affected application or system service
 
 ✅ Technician Benefits
-Saves time by avoiding manual Event Viewer navigation
+Saves time: No manual Event Viewer digging
 
-Ensures consistency in how issues are identified and logged
+Consistent process: All techs follow the same triage method
 
-Helps demonstrate due diligence in support handling
+Audit-ready: Supports compliance and transparency
 
-Facilitates faster resolution and escalation when needed
+Faster resolutions: Speeds up root cause discovery
 
-Use this SOP during troubleshooting sessions to enhance your technical findings, back up decisions with log data, and elevate the overall quality of service delivery.
+📌 Best Practices
+Run after every major system issue before rebooting
 
+Store logs for repeat offenders (track trends across devices)
+
+Customize time range and severity filter in the script as needed:
+
+powershell
+Copy
+Edit
+$TimeRangeHours = 24
+$FilterLevels = @("Error", "Warning")
