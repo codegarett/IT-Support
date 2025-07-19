@@ -108,7 +108,5 @@ Store logs for repeat offenders (track trends across devices)
 Customize time range and severity filter in the script as needed:
 
 powershell
-Copy
-Edit
 $TimeRangeHours = 24
 $FilterLevels = @("Error", "Warning")
